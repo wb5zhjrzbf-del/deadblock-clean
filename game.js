@@ -19,7 +19,48 @@ const player = {
   size: 30
 };
 
-function update() {
+function update() {ctx.fillStyle = "black";
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+// ===== JUGADOR =====
+ctx.fillStyle = "lime";
+ctx.fillRect(player.x, player.y, player.size, player.size);
+
+// ===== MOVIMIENTO CON JOYSTICK =====
+if (isTouching) {
+  const dx = touchX - joystick.baseX;
+  const dy = touchY - joystick.baseY;
+
+  player.x += dx * 0.05;
+  player.y += dy * 0.05;
+}
+
+// ===== JOYSTICK (DIBUJO) =====
+ctx.beginPath();
+ctx.arc(
+  joystick.baseX,
+  joystick.baseY,
+  joystick.radius,
+  0,
+  Math.PI * 2
+);
+ctx.strokeStyle = "white";
+ctx.lineWidth = 3;
+ctx.stroke();
+
+ctx.beginPath();
+ctx.arc(
+  joystick.knobX,
+  joystick.knobY,
+  joystick.knobRadius,
+  0,
+  Math.PI * 2
+);
+ctx.fillStyle = "white";
+ctx.fill();
+
+// ===== LOOP =====
+requestAnimationFrame(update);
   ctx.fillStyle = "black";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
