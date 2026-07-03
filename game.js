@@ -60,7 +60,30 @@ function update() {
     player.size,
     player.size
   );
+// Base del joystick
+ctx.beginPath();
+ctx.arc(
+  joystick.baseX,
+  joystick.baseY,
+  joystick.radius,
+  0,
+  Math.PI * 2
+);
+ctx.strokeStyle = "white";
+ctx.lineWidth = 3;
+ctx.stroke();
 
+// Palanca del joystick
+ctx.beginPath();
+ctx.arc(
+  joystick.knobX,
+  joystick.knobY,
+  joystick.knobRadius,
+  0,
+  Math.PI * 2
+);
+ctx.fillStyle = "white";
+ctx.fill();
   ctx.fillStyle = "white";
   ctx.font = "22px Arial";
   ctx.fillText("DeadBlock Alpha 0.2", 20, 35);
