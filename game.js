@@ -29,7 +29,17 @@ function update() {
   ctx.fillStyle = "white";
   ctx.font = "20px Arial";
   ctx.fillText("DeadBlock TEST OK", 20, 40);
+// JOYSTICK DRAW
+ctx.beginPath();
+ctx.arc(joystick.baseX, joystick.baseY, joystick.radius, 0, Math.PI * 2);
+ctx.strokeStyle = "white";
+ctx.lineWidth = 3;
+ctx.stroke();
 
+ctx.beginPath();
+ctx.arc(joystick.knobX, joystick.knobY, joystick.knobRadius, 0, Math.PI * 2);
+ctx.fillStyle = "white";
+ctx.fill();
   requestAnimationFrame(update);
 }
 
